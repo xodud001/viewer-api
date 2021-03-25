@@ -1,28 +1,29 @@
 package rev.web.doc.viewer.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
+@Data
 @Builder
-public class Page {
+@Table(name = "page")
+public class Page extends AbstractPage{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
+    private Long id;
 
     private String title;
 
     private String description;
+
+    private Integer crudType;
+
+    private String url;
+
 }

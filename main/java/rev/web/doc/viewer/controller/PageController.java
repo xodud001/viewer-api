@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import rev.web.doc.viewer.domain.dto.PageDto;
 import rev.web.doc.viewer.domain.entity.Page;
 import rev.web.doc.viewer.domain.repository.PageRepository;
 import rev.web.doc.viewer.service.PageService;
@@ -25,9 +26,8 @@ public class PageController {
     }
 
     @GetMapping("/pages")
-    public List<Page> getPates(){
-        List<Page> pages = pageService.getPages();
-        return pages;
+    public List<PageDto> getPates(){
+        return pageService.getPages();
     }
 
     @PostMapping("/pages")
