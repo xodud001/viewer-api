@@ -9,6 +9,7 @@ import rev.web.doc.viewer.domain.repository.PageRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PageService {
@@ -31,20 +32,29 @@ public class PageService {
         List<PageDto> pageDtos = new ArrayList<>();
         pages.forEach( page -> {
             pageDtos.add(
-                PageDto.builder()
-                        .id(page.getId())
-                        .title(page.getTitle())
-                        .description(page.getDescription())
-                        .crudType(crudTypeService.getType(page.getCrudType()))
-                        .url(page.getUrl())
-                        .params(requestParameterService.getRequestParametersByPageId(page.getId()))
-                        .build()
+                createPageDto(page)
             );
         });
         return pageDtos;
     }
 
+    public PageDto getPage(Long id){
+        Page page = pageRepository.findById(id).orElse(null);
+        assert page != null;
+        return createPageDto(page);
+    }
     public void createPage(Page page){
         pageRepository.save(page);
+    }
+
+    private PageDto createPageDto(Page page){
+        return PageDto.builder()
+                .id(page.getId())
+                .title(page.getTitle())
+                .description(page.getDescription())
+                .crudType(crudTypeService.getType(page.getCrudType()))
+                .url(page.getUrl())
+                .params(requestParameterService.getRequestParametersByPageId(page.getId()))
+                .build();
     }
 }

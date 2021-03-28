@@ -2,6 +2,7 @@ package rev.web.doc.viewer.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rev.web.doc.viewer.domain.dto.PageDto;
@@ -10,6 +11,7 @@ import rev.web.doc.viewer.service.TitleService;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class TitleController {
 

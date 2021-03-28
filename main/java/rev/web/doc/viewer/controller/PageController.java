@@ -30,6 +30,11 @@ public class PageController {
         return pageService.getPages();
     }
 
+    @GetMapping("/page/{id}")
+    public PageDto getPate(@PathVariable("id") Long id){
+        return pageService.getPage(id);
+    }
+
     @PostMapping("/pages")
     public ResponseEntity<?> create(@Validated @RequestBody Page resource ) throws URISyntaxException {
         Page page = Page.builder()
