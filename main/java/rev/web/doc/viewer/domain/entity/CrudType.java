@@ -11,8 +11,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
 @Builder
+@Entity
 public class CrudType {
 
     @Id

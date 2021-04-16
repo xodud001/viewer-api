@@ -12,11 +12,19 @@ import javax.persistence.*;
 @Data
 @Entity
 @Builder
+@Table(name = "request_parameter")
 public class RequestParameter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+// Path Parameters : 0
+// Query Parameters : 1
+// Form Data Parameters : 2
+// Body Parameters : 3
+// Headers : 4
+    private int parameterType;
 
     private String name;
 

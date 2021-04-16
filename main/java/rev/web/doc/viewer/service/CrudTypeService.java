@@ -20,6 +20,7 @@ public class CrudTypeService {
 
     public String getType(Integer id) {
         Optional<CrudType> type = crudTypeRepository.findById(id);
+
         if(type.isPresent()) return type.get().getType();
         else return "NULL";
     }
