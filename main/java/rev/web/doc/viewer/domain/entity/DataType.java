@@ -1,21 +1,25 @@
 package rev.web.doc.viewer.domain.entity;
 
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-@MappedSuperclass
-public class AbstractPage {
+@Builder
+@Entity
+@Table(name = "data_type")
+public class DataType {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    protected Long id;
+    @Column(name = "data_id")
+    private Integer dataId;
 
-    @Column(name = "title")
-    protected String title;
+    private String type;
 }

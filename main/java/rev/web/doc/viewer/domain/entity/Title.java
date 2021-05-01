@@ -1,16 +1,6 @@
 package rev.web.doc.viewer.domain.entity;
 
-import lombok.*;
-import org.hibernate.annotations.Immutable;
-
-import javax.persistence.*;
-
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@Entity
-@Data
-@Immutable
-@Table(name = "page")
-public class Title extends AbstractPage{
-
+public interface Title{ // Page 에서 타이틀만 가져오는 Mapping Interface
+    Long getPageId();
+    String getTitle();
 }

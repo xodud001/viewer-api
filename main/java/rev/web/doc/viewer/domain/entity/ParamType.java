@@ -13,18 +13,18 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
-@Table(name = "crud_type")
-public class CrudType {
+@Table(name = "param_type")
+public class ParamType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "crud_id")
-    private Integer crudId;
+    @Column(name = "param_id")
+    private Integer paramId;
 
+    // Path Parameters : 0
+    // Query Parameters : 1
+    // Form Data Parameters : 2
+    // Body Parameters : 3
+    // Headers : 4
     private String type;
-    // 1 : GET
-    // 2 : POST
-    // 3 : DELETE
-    // 4 : PATCH
-
 }

@@ -1,5 +1,6 @@
 package rev.web.doc.viewer.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,27 +11,30 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
 @Builder
+@Entity
 @Table(name = "request_parameter")
 public class RequestParameter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-// Path Parameters : 0
-// Query Parameters : 1
-// Form Data Parameters : 2
-// Body Parameters : 3
-// Headers : 4
-    private int parameterType;
+    @Column(name = "req_param_id")
+    private Long reqParamId;
 
     private String name;
 
-    private String dataType;
-
     private String description;
 
-    private Long pageId;
+    @ManyToOne
+    @JoinColumn(name="page_id")
+    @JsonIgnore
+    private Page page;
+
+    @OneToOne
+    @JoinColumn(name="data_id")
+    private DataType dataType;
+
+    @OneToOne
+    @JoinColumn(name="param_id")
+    private ParamType parameterType;
 }
