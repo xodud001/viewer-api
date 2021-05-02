@@ -8,6 +8,7 @@ import rev.web.doc.viewer.domain.entity.Title;
 import rev.web.doc.viewer.domain.repository.PageRepository;
 import rev.web.doc.viewer.domain.repository.RequestParameterRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -31,6 +32,7 @@ public class PageService {
         return pageRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public void createPage(Page page) {
         pageRepository.create(
                 page.getPageId(),
@@ -48,5 +50,11 @@ public class PageService {
                 exception.printStackTrace();
             }
         });
+    }
+
+    @Transactional
+    public void deletePage(String id) {
+        requestParameterRepository.deleteAllByPage(pageRepository.findById(id).orElse(null));
+        pageRepository.deleteById(id);
     }
 }

@@ -17,4 +17,7 @@ public interface RequestParameterRepository extends JpaRepository<RequestParamet
     @Modifying // select 문이 아님을 나타낸다
     @Query(value = "UPDATE `api_doc`.`request_parameter` SET `page_id` = :pageId WHERE (`req_param_id` = :reqParamId)", nativeQuery = true)
     void updatePageId(@Param("pageId")String pageId, @Param("reqParamId")String reqParamId) throws Exception;
+
+    @Transactional
+    void deleteAllByPage(Page page);
 }

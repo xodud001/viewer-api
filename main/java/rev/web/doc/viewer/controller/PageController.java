@@ -34,5 +34,10 @@ public class PageController {
         pageService.createPage(page);
     }
 
+    @DeleteMapping("/page/{id}")
+    public void deletePage(@PathVariable("id") String id){
+        pageService.deletePage(id);
+    }
+
 
 }
