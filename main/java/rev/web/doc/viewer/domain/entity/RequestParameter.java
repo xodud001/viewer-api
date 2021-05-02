@@ -17,9 +17,8 @@ import javax.persistence.*;
 public class RequestParameter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "req_param_id")
-    private Long reqParamId;
+    private String reqParamId;
 
     private String name;
 

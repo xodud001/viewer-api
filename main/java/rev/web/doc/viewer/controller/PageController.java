@@ -25,7 +25,14 @@ public class PageController {
     }
 
     @GetMapping("/page/{id}")
-    public Page getPage(@PathVariable("id") Long id){
+    public Page getPage(@PathVariable("id") String id){
         return pageService.getPage(id);
     }
+
+    @PostMapping("/page")
+    public void createPage(@RequestBody Page page){
+        pageService.createPage(page);
+    }
+
+
 }

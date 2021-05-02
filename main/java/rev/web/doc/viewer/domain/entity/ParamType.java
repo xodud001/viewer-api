@@ -17,8 +17,7 @@ import javax.persistence.*;
 public class ParamType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "param_id")
+    @Column(name = "param_id", insertable = false, updatable = false)
     private Integer paramId;
 
     // Path Parameters : 0
@@ -26,5 +25,6 @@ public class ParamType {
     // Form Data Parameters : 2
     // Body Parameters : 3
     // Headers : 4
+    @Column(insertable = false, updatable = false)
     private String type;
 }

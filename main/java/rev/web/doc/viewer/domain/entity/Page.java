@@ -14,9 +14,8 @@ import java.util.List;
 public class Page{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "page_id")
-    private Long pageId;
+    private String pageId;
 
     private String title;
 
@@ -29,5 +28,6 @@ public class Page{
     private CrudType crudType;
 
     @OneToMany(mappedBy = "page")
+    @Column(updatable = false, insertable = false)
     private List<RequestParameter> parameters;
 }

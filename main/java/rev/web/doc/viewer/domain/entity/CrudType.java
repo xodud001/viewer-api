@@ -17,10 +17,9 @@ import javax.persistence.*;
 public class CrudType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "crud_id")
+    @Column(name = "crud_id",insertable = false, updatable = false)
     private Integer crudId;
-
+    @Column(insertable = false, updatable = false)
     private String type;
     // 1 : GET
     // 2 : POST
