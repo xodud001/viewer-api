@@ -33,6 +33,10 @@ public class PageController {
     public void createPage(@RequestBody Page page){
         pageService.createPage(page);
     }
+    @PatchMapping("/page")
+    public void updatePage(@RequestBody Page page){
+        pageService.updatePage(page);
+    }
 
     @DeleteMapping("/page/{id}")
     public void deletePage(@PathVariable("id") String id){

@@ -25,4 +25,9 @@ public interface PageRepository extends JpaRepository<Page, String> {
                 @Param("url")String url,
                 @Param("crud_id")Integer crudId
     );
+
+    @Transactional
+    @Modifying
+    @Query(value="UPDATE `api_doc`.`page` SET `description` = :description, `title` = :title, `url` = :url, `crud_id` = :crudId WHERE (`page_id` = :pageId);", nativeQuery = true)
+    void update(String pageId, String description, String title, String url, Integer crudId);
 }

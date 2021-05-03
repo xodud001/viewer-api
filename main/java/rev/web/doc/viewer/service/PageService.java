@@ -53,8 +53,21 @@ public class PageService {
     }
 
     @Transactional
+    public void updatePage(Page page) {
+        System.out.println("Request Patch : " + page.getPageId());
+        pageRepository.update(
+                page.getPageId(),
+                page.getDescription(),
+                page.getTitle(),
+                page.getUrl(),
+                page.getCrudType().getCrudId());
+    }
+
+    @Transactional
     public void deletePage(String id) {
         requestParameterRepository.deleteAllByPage(pageRepository.findById(id).orElse(null));
         pageRepository.deleteById(id);
     }
+
+
 }
