@@ -7,8 +7,11 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = false, exclude = {"parameters", "crudType"})
+@ToString(exclude = {"parameters", "crudType"})
 @Entity
-@Data
 @Builder
 @Table(name = "page")
 public class Page{
